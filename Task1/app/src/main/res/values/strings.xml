@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Task Code</string>
+
+    <string name="imageView">我是一张图片</string>
+    <string name="button">我是一个按钮</string>
+    <string name="textView">头像</string>
+    <string name="radioButton1">按钮1</string>
+    <string name="radioButton2">按钮2</string>
+    <string name="checkBox">按钮3</string>
+    <string name="editTextHint">这是输入提示</string>
+
+
+</resources>
