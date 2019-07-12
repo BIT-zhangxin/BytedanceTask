@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MessageActivity">
-        </activity>
+
         <activity android:name=".Exercise1Activity">
         </activity>
-        <activity android:name=".Exercise2Activity">
 
+        <activity android:name=".Exercise2Activity">
         </activity>
+
         <activity android:name=".Exercise3Activity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -23,6 +23,22 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".MessageActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".exercise4.A1"
+            android:launchMode="standard">
+        </activity>
+        <activity android:name=".exercise4.A2"
+            android:launchMode="singleTop">
+        </activity>
+        <activity android:name=".exercise4.A3"
+            android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".exercise4.A4"
+            android:launchMode="singleInstance">
         </activity>
     </application>
 
