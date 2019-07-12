@@ -4,12 +4,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class TestActivity extends AppCompatActivity {
+public class Exercise1Activity extends AppCompatActivity {
+
+    /*
+    * 第一题输出结果
+    *
+    * 开启应用
+    * onCreate
+    * onStart
+    * onResume
+    *
+    * 旋转屏幕
+    * onPause
+    * onStop
+    * onDestroy
+    * onCreate
+    * onStart
+    * onResume
+    *
+    * 旋转回来
+    * onPause
+    * onStop
+    * onDestroy
+    * onCreate
+    * onStart
+    * onResume
+    *
+    * 关闭应用
+    * onPause
+    * onStop
+    * onDestroy
+    * */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.exercise1_layout);
         Log.d("测试输出","onCreate");
     }
 
