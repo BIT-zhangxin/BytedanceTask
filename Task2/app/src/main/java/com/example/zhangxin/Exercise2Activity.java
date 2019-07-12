@@ -47,14 +47,12 @@ public class Exercise2Activity extends AppCompatActivity implements View.OnClick
     //递归函数，结算viewGroup的view个数
     private static int getCountComponent(ViewGroup v,int num){
         int t = v.getChildCount();
-        int n = 0;
         for (int i = 0; i < t; i++) {
             View tmp = v.getChildAt(i);
             if (tmp instanceof ViewGroup) {
-                n++;
                 num = getCountComponent((ViewGroup) tmp, num);
             }
         }
-        return num + t - n;
+        return num + t;
     }
 }
