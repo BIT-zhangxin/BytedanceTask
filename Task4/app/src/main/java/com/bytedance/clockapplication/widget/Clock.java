@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.text.SpannableStringBuilder;
@@ -70,6 +72,44 @@ public class Clock extends View {
     public Clock(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
+    }
+
+    public static final int TIME_CHANGE=1023;
+
+
+
+    /*
+    *
+    * handler，用于处理时间变化时的更新
+    *
+    * */
+    @SuppressLint("HandlerLeak")
+    private Handler timeChangeHandler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == TIME_CHANGE) {
+                invalidate();
+                timeChangeHandler.sendEmptyMessageDelayed(TIME_CHANGE,1000);
+            }
+        }
+    };
+
+    /*
+    *
+    * 开始函数
+    *
+    * */
+    public void start(){
+        timeChangeHandler.sendEmptyMessage(TIME_CHANGE);
+    }
+
+    /*
+    *
+    * 结束函数
+    *
+    * */
+    public void stop(){
+        timeChangeHandler.removeCallbacksAndMessages(null);
     }
 
     @Override
