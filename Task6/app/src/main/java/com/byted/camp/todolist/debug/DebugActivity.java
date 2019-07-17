@@ -15,7 +15,10 @@ import android.widget.Toast;
 import com.byted.camp.todolist.R;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -64,8 +67,16 @@ public class DebugActivity extends AppCompatActivity {
         fileWriteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String fileName="test.txt";
+                String text="张歆 1120161967";
+
+                writeFileData(fileName,text);
+
+                String result=readFileData(fileName);
+
                 // TODO 把一段文本写入某个存储区的文件中，再读出来，显示在 fileText 上
-                fileText.setText("TODO");
+                fileText.setText(result);
             }
         });
     }
@@ -126,5 +137,36 @@ public class DebugActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return sb.toString();
+    }
+
+    //向指定文件中写入字符串
+    public void writeFileData(String filename, String text){
+
+        try {
+            FileOutputStream fileOutputStream=this.openFileOutput(filename, MODE_PRIVATE);
+            //打开指定名称文件（不可附带路径），若不存在则在/data/data/<package name>/files目录下创建
+            byte[] bytes=text.getBytes();
+            fileOutputStream.write(bytes);
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //打开指定文件读取字符串
+    public String readFileData(String fileName){
+
+        String result="";
+
+        try{
+            FileInputStream fileInputStream=this.openFileInput(fileName);
+            int length=fileInputStream.available();
+            byte[] buffer=new byte[length];
+            fileInputStream.read(buffer);
+            result=new String(buffer, StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
