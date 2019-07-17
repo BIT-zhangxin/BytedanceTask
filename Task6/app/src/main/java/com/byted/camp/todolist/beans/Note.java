@@ -14,6 +14,8 @@ public class Note {
     private State state;
     private String content;
 
+    private int priority;
+
     public Note(long id) {
         this.id = id;
     }
@@ -40,5 +42,13 @@ public class Note {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

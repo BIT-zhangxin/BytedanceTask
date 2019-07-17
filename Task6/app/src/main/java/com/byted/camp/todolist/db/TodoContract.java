@@ -8,7 +8,7 @@ package com.byted.camp.todolist.db;
 public final class TodoContract {
 
     static final int DATABASE_START_VERSION=1;//最初版本为1
-    static final int DATABASE_VERRSION=1;//当前版本为1
+    static final int DATABASE_VERSION=2;//当前版本为2
     static final String DATABASE_NAME="todo";//数据库名称
 
     public static final String TABLE_NAME="Note";//表名
@@ -17,6 +17,7 @@ public final class TodoContract {
     public static final String date="date";
     public static final String state="state";
     public static final String content="content";
+    public static final String priority="priority";
 
     static final String CREATE_TABLE_NOTE="create table "
         +TABLE_NAME+"("
@@ -25,10 +26,11 @@ public final class TodoContract {
         +state+" int,"
         +content+" text)";//创建Note数据表
 
+    static final String ALTER_TABLE_NOTE="alter table "
+        +TABLE_NAME+" add "
+        +priority+" int";
 
     public static final String WHERE_CLAUSE=id+"=?";
-
-
 
     // TODO 定义表结构和 SQL 语句常量
 

@@ -15,4 +15,9 @@
     <!-- Note -->
     <string name="take_a_note">Take a note</string>
     <string name="confirm">Confirm</string>
+
+    <string name="priority1">一般事项</string>
+    <string name="priority2">重要事项</string>
+    <string name="priority3">紧急事项</string>
+
 </resources>

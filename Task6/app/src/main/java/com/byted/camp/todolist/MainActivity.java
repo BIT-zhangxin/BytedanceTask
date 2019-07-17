@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        db.close();
         dbHelper.close();
         super.onDestroy();
     }
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Note> list=new ArrayList<>();
         Cursor cursor=null;
-        String[] args={TodoContract.id,TodoContract.date,TodoContract.state,TodoContract.content};
+        String[] args={TodoContract.id,TodoContract.date,TodoContract.state,TodoContract.content,TodoContract.priority};
         try {
             cursor=db.query(
                 TodoContract.TABLE_NAME,
@@ -183,13 +184,14 @@ public class MainActivity extends AppCompatActivity {
                 null,
                 null,
                 null,
-                TodoContract.date+" DESC");
+                TodoContract.priority+" DESC,"+TodoContract.date+" DESC");
             while (cursor.moveToNext()){
 
                 Note note=new Note(cursor.getLong(cursor.getColumnIndex(TodoContract.id)));
                 note.setDate(new Date(cursor.getLong(cursor.getColumnIndex(TodoContract.date))));
                 note.setState(State.from(cursor.getInt(cursor.getColumnIndex(TodoContract.state))));
                 note.setContent(cursor.getString(cursor.getColumnIndex(TodoContract.content)));
+                note.setPriority(cursor.getInt(cursor.getColumnIndex(TodoContract.priority)));
                 list.add(note);
             }
         }catch (SQLiteException e){
