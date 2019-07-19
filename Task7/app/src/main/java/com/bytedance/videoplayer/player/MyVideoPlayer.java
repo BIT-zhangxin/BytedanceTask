@@ -297,11 +297,17 @@ public class MyVideoPlayer extends RelativeLayout {
     }
 
     private int getDurationSecond(){
+        if(mMediaPlayer==null){
+            return 0;
+        }
         long duration=mMediaPlayer.getDuration();
         return (int)(duration/1000);
     }
 
     private int getProgressSecond(){
+        if(mMediaPlayer==null){
+            return 0;
+        }
         long progress=mMediaPlayer.getCurrentPosition();
         if((progress%1000)>0){
             return (int)(progress/1000)+1;
@@ -428,11 +434,16 @@ public class MyVideoPlayer extends RelativeLayout {
         }
     }
 
-    public void release() {
+    public boolean isPlaying() {
         if (mMediaPlayer != null) {
-            mMediaPlayer.reset();
-            mMediaPlayer.release();
-            mMediaPlayer = null;
+            return mMediaPlayer.isPlaying();
+        }
+        return false;
+    }
+
+    public void seekTo(long l) {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.seekTo(l);
         }
     }
 
@@ -458,34 +469,11 @@ public class MyVideoPlayer extends RelativeLayout {
         }
     }
 
-
-    public long getDuration() {
+    public void release() {
         if (mMediaPlayer != null) {
-            return mMediaPlayer.getDuration();
-        } else {
-            return 0;
-        }
-    }
-
-
-    public long getCurrentPosition() {
-        if (mMediaPlayer != null) {
-            return mMediaPlayer.getCurrentPosition();
-        } else {
-            return 0;
-        }
-    }
-
-    public boolean isPlaying() {
-        if (mMediaPlayer != null) {
-            return mMediaPlayer.isPlaying();
-        }
-        return false;
-    }
-
-    public void seekTo(long l) {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.seekTo(l);
+            mMediaPlayer.reset();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
         }
     }
 }
