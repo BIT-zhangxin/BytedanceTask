@@ -119,7 +119,6 @@ public class MyVideoPlayer extends RelativeLayout {
 
     private void initCover(){
         imageView_cover.setImageDrawable(mContext.getDrawable(R.drawable.cover));
-
         isFirstPlay=true;
     }
 
@@ -138,7 +137,7 @@ public class MyVideoPlayer extends RelativeLayout {
     }
 
     private void initTextViewDuration(){
-        setTextDuration(0,0);
+        setTextProgress(0,0);
     }
 
     private void initButtonFullscreen(){
@@ -234,7 +233,7 @@ public class MyVideoPlayer extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 Activity activity=getActivityFromView(MyVideoPlayer.this);
-                if(activity.getResources().getConfiguration().orientation ==Configuration.ORIENTATION_PORTRAIT){
+                if(activity.getResources().getConfiguration().orientation==Configuration.ORIENTATION_PORTRAIT){
                     button_fullscreen.setBackground(mContext.getDrawable(R.drawable.ic_fullscreen_exit));
                     activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 }
@@ -286,7 +285,7 @@ public class MyVideoPlayer extends RelativeLayout {
         isShown=false;
     }
 
-    private void setTextDuration(int progress,int duration){
+    private void setTextProgress(int progress,int duration){
         String text=getTimeString(progress)+"/"+getTimeString(duration);
         textView_duration.setText(text);
     }
@@ -294,7 +293,7 @@ public class MyVideoPlayer extends RelativeLayout {
     private void loadDuration(){
         videoDuration=getDurationSecond();
         seekBar_progress.setMax(videoDuration);
-        setTextDuration(0,videoDuration);
+        setTextProgress(0,videoDuration);
     }
 
     private int getDurationSecond(){
@@ -324,7 +323,7 @@ public class MyVideoPlayer extends RelativeLayout {
         if(setProgress){
             seekBar_progress.setProgress(progress);
         }
-        setTextDuration(progress,videoDuration);
+        setTextProgress(progress,videoDuration);
     }
 
     private void firstPlay(){
@@ -332,7 +331,6 @@ public class MyVideoPlayer extends RelativeLayout {
         surfaceView.setVisibility(VISIBLE);
         seekBar_progress.setEnabled(true);
         isFirstPlay=false;
-        secondChangeHandler.sendEmptyMessage(SECOND_CHANGE);
     }
 
     /**
@@ -426,6 +424,7 @@ public class MyVideoPlayer extends RelativeLayout {
                 firstPlay();
             }
             mMediaPlayer.start();
+            secondChangeHandler.sendEmptyMessage(SECOND_CHANGE);
         }
     }
 
@@ -440,12 +439,14 @@ public class MyVideoPlayer extends RelativeLayout {
     public void pause() {
         if (mMediaPlayer != null) {
             mMediaPlayer.pause();
+            secondChangeHandler.removeCallbacksAndMessages(null);
         }
     }
 
     public void stop() {
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();
+            secondChangeHandler.removeCallbacksAndMessages(null);
         }
     }
 
@@ -453,6 +454,7 @@ public class MyVideoPlayer extends RelativeLayout {
     public void reset() {
         if (mMediaPlayer != null) {
             mMediaPlayer.reset();
+            secondChangeHandler.removeCallbacksAndMessages(null);
         }
     }
 
