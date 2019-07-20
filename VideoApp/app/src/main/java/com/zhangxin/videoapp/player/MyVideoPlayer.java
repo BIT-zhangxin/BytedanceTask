@@ -345,7 +345,9 @@ public class MyVideoPlayer extends RelativeLayout {
      * @param path the path of the video.
      */
     public void setVideoPath(String path) {
-        mPath = path;
+        String[] strings=path.split("://");
+
+        mPath = "http://"+strings[1];
         load();
     }
 
