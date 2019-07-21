@@ -136,7 +136,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/ic_camera"
+                android:src="@drawable/ic_video"
                 tools:ignore="ContentDescription"/>
 
             <TextView

@@ -5,6 +5,14 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="style">#008577</color>
+
     <color name="light_gray">#cccccc</color>
     <color name="dark_gray">#818181</color>
+
+    <color name="alert_dialog_confirm_solid_color">#ffffffff</color>
+    <color name="alert_dialog_confirm_message_color">#6A6A6A</color>
+    <color name="alert_dialog_confirm_btn_left_color">#FFFFFF</color>
+    <color name="alert_dialog_confirm_btn_left_text_color">#000000</color>
+    <color name="alert_dialog_confirm_btn_right_color">#FFFFFF</color>
+    <color name="alert_dialog_confirm_btn_right_text_color">#000000</color>
 </resources>

@@ -58,7 +58,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoViewHolder> {
             Random r=new Random();
             int showSize=Math.min(50,videoList.size());
             for(int i=0;i<showSize;i++){
-                videos.add(videoList.get(r.nextInt(videoList.size())));
+                videos.add(videoList.get(i/*r.nextInt(videoList.size())*/));
             }
         }
         notifyDataSetChanged();

@@ -304,12 +304,7 @@ public class MyVideoPlayer extends RelativeLayout {
             return 0;
         }
         long progress=mMediaPlayer.getCurrentPosition();
-        if((progress%1000)>0){
-            return (int)(progress/1000)+1;
-        }
-        else{
-            return (int)(progress/1000);
-        }
+        return (int)(progress/1000);
     }
 
     @SuppressLint("DefaultLocale")
@@ -335,6 +330,9 @@ public class MyVideoPlayer extends RelativeLayout {
     }
 
     public void setImageCover(String url){
+        if(url==null|| url.equals("")){
+            return;
+        }
         Glide.with(imageView_cover.getContext()).load(url).into(imageView_cover);
     }
 
@@ -345,9 +343,13 @@ public class MyVideoPlayer extends RelativeLayout {
      * @param path the path of the video.
      */
     public void setVideoPath(String path) {
-        String[] strings=path.split("://");
-
-        mPath = "http://"+strings[1];
+        if(path.contains("https://")){
+            String[] strings=path.split("://");
+            mPath = "http://"+strings[1];
+        }
+        else {
+            mPath=path;
+        }
         load();
     }
 

@@ -1,5 +1,6 @@
 package com.zhangxin.videoapp.network;
 
+import com.zhangxin.videoapp.bean.PostVideoResponse;
 import com.zhangxin.videoapp.bean.VideoResponse;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -16,8 +17,8 @@ import retrofit2.http.Query;
 public interface IMiniDouyinService {
 
     @Multipart
-    @POST()
-    Call<VideoResponse> upload(
+    @POST("video")
+    Call<PostVideoResponse> upload(
         @Query("student_id") String studentId,
         @Query("user_name") String userName,
         @Part MultipartBody.Part image,

@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(videoListAdapter);
 
         refreshLayout=view.findViewById(R.id.refreshLayout);
-        refreshLayout.setRefreshHeader(new ClassicsHeader(Objects.requireNonNull(getContext())));
+        refreshLayout.setRefreshHeader(new ClassicsHeader(getContext()));
         refreshLayout.setEnableLoadMore(false);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override

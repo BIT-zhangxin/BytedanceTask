@@ -6,6 +6,7 @@ import static com.bytedance.camera.demo.utils.Utils.getOutputMediaFile;
 
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
+import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.media.MediaRecorder.AudioEncoder;
 import android.media.MediaRecorder.AudioSource;
@@ -83,6 +84,7 @@ public class CustomCameraActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btn_facing).setOnClickListener(v -> {
+            Toast.makeText(this,"我的手机切换前置摄像头无法录像！\n暂时禁用该功能！",Toast.LENGTH_LONG).show();
             if(CAMERA_TYPE==CameraInfo.CAMERA_FACING_BACK){
                 getCamera(CameraInfo.CAMERA_FACING_FRONT);
             }
@@ -214,9 +216,7 @@ public class CustomCameraActivity extends AppCompatActivity {
         mMediaRecorder.setCamera(mCamera);
         mMediaRecorder.setAudioSource(AudioSource.CAMCORDER);
         mMediaRecorder.setVideoSource(VideoSource.CAMERA);
-        mMediaRecorder.setOutputFormat(OutputFormat.MPEG_4);
-        mMediaRecorder.setAudioEncoder(AudioEncoder.AMR_NB);
-        mMediaRecorder.setVideoEncoder(VideoEncoder.MPEG_4_SP);
+        mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
         mMediaRecorder.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).getAbsolutePath());
         mMediaRecorder.setPreviewDisplay(mSurfaceView.getHolder().getSurface());
         mMediaRecorder.setOrientationHint(rotationDegree);
