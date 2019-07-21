@@ -4,4 +4,18 @@
     <string name="menu_home">首页</string>
     <string name="menu_create">视频创作</string>
     <string name="menu_information">个人信息</string>
+
+    <string name="select_image">选择封面</string>
+    <string name="create_add_image">拍照</string>
+    <string name="create_select_image">选择图片</string>
+    <string name="create_preview_image">预览图片</string>
+
+    <string name="select_video">选择视频</string>
+    <string name="create_add_video">拍摄</string>
+    <string name="create_select_video">选择视频</string>
+    <string name="create_preview_video">预览视频</string>
+
+    <string name="button_upload">上传</string>
+    <string name="button_empty">清空</string>
+
 </resources>
