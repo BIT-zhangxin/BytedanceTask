@@ -1,12 +1,10 @@
 package com.zhangxin.videoapp.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import com.zhangxin.videoapp.R;
-import com.zhangxin.videoapp.bean.Video;
 import com.zhangxin.videoapp.player.MyVideoPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
