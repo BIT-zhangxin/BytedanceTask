@@ -3,21 +3,21 @@ package com.zhangxin.videoapp.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.app.AppCompatActivity;
-import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
+import com.zhangxin.videoapp.MyAppCompatActivity;
 import com.zhangxin.videoapp.R;
 import com.zhangxin.videoapp.fragment.CreateFragment;
 import com.zhangxin.videoapp.fragment.HomeFragment;
 import com.zhangxin.videoapp.fragment.InformationFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MyAppCompatActivity {
 
     ViewPager viewPager;
     BottomNavigationView bottomNavigationView;

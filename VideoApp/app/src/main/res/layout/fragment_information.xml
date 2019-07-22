@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_photo_profile"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/photo_profile"/>
+
+    <TextView
+        android:id="@+id/tv_student_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="@string/button_empty"
+        android:textColor="#000000"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="@string/button_empty"
+        android:textColor="#000000"
+        android:textSize="20sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_account"
+            tools:ignore="ContentDescription"/>
+
+        <EditText
+            android:id="@+id/et_student_id"
+            android:layout_width="match_parent"
+            android:layout_height="19dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="@dimen/line"
+            android:background="@null"
+            android:hint="@string/hint_student_id"
+            android:inputType="text"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textColorHint="@color/dark_gray"
+            android:textSize="14sp"
+            tools:ignore="Autofill" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="32dp"
+            android:background="@color/style" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_account"
+            tools:ignore="ContentDescription"/>
+
+        <EditText
+            android:id="@+id/et_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="19dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="@dimen/line"
+            android:background="@null"
+            android:hint="@string/hint_user_name"
+            android:inputType="text"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textColorHint="@color/dark_gray"
+            android:textSize="14sp"
+            tools:ignore="Autofill" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="32dp"
+            android:background="@color/style" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_information_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/button"
+        android:text="@string/information_commit"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+</LinearLayout>

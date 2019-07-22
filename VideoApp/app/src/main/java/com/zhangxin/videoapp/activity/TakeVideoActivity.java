@@ -1,5 +1,6 @@
 package com.zhangxin.videoapp.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
@@ -10,6 +11,8 @@ import android.media.MediaRecorder.VideoSource;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Surface;
@@ -45,6 +48,21 @@ public class TakeVideoActivity extends AppCompatActivity {
     private boolean isRecording = false;
 
     private MediaRecorder mMediaRecorder;
+
+    private int CUTDOWN_MSG=511;
+
+    private long CUTDOWN_TIME=10000;//倒计时时间
+
+    //计时器，间隔一定时间进行一次操作
+    @SuppressLint("HandlerLeak")
+    private Handler cutdownHandler =new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == CUTDOWN_MSG) {
+                iv_take_video.performClick();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,10 +101,12 @@ public class TakeVideoActivity extends AppCompatActivity {
         });
 
         iv_take_video=findViewById(R.id.iv_take_video);
+        iv_take_video.setImageDrawable(getDrawable(R.drawable.ic_start));
         iv_take_video.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isRecording) {
+                    cutdownHandler.removeCallbacksAndMessages(null);
                     releaseMediaRecorder();
                     Intent intent=new Intent();
                     Uri fileUri=Uri.fromFile(file);
@@ -95,6 +115,7 @@ public class TakeVideoActivity extends AppCompatActivity {
                     finish();
                 } else {
                     isRecording=prepareVideoRecorder();
+                    iv_take_video.setImageDrawable(getDrawable(R.drawable.ic_stop));
                 }
             }
         });
@@ -127,6 +148,12 @@ public class TakeVideoActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cutdownHandler.removeCallbacksAndMessages(null);
+    }
+
     private boolean prepareVideoRecorder(){
         mCamera.unlock();
         mMediaRecorder=new MediaRecorder();
@@ -143,6 +170,7 @@ public class TakeVideoActivity extends AppCompatActivity {
         try {
             mMediaRecorder.prepare();
             mMediaRecorder.start();
+            cutdownHandler.sendEmptyMessageDelayed(CUTDOWN_MSG,CUTDOWN_TIME);
         } catch (IOException e) {
             e.printStackTrace();
             return false;
@@ -172,6 +200,7 @@ public class TakeVideoActivity extends AppCompatActivity {
             mMediaRecorder=null;
             mCamera.lock();
             isRecording=false;
+
         }
     }
 

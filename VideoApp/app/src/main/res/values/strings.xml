@@ -18,4 +18,8 @@
     <string name="button_upload">上传</string>
     <string name="button_empty">清空</string>
 
+    <string name="hint_student_id">请输入你的学号</string>
+    <string name="hint_user_name">请输入你的名称</string>
+    <string name="information_commit">提交</string>
+
 </resources>

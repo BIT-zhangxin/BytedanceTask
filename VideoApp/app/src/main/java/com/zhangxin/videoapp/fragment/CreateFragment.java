@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import com.zhangxin.videoapp.MyApplication;
 import com.zhangxin.videoapp.R;
 import com.zhangxin.videoapp.activity.ImageActivity;
 import com.zhangxin.videoapp.activity.TakePhotoActivity;
@@ -283,12 +284,14 @@ public class CreateFragment extends Fragment implements View.OnClickListener {
 
     private void upload() {
         setEnabledFalse();
+        String student_id=((MyApplication)getActivity().getApplication()).getStudent_id();
+        String user_name=((MyApplication)getActivity().getApplication()).getUser_name();
         Call<PostVideoResponse> postVideoResponseCall = RetrofitManager
             .get("http://test.androidcamp.bytedance.com/mini_douyin/invoke/")
             .create(IMiniDouyinService.class)
             .upload(
-                "120161967",
-                "张歆",
+                student_id,
+                user_name,
                 getMultipartFromUri("cover_image",imageUri),
                 getMultipartFromUri("video",videoUri));
         postVideoResponseCall.enqueue(new Callback<PostVideoResponse>() {
