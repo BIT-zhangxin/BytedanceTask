@@ -279,6 +279,14 @@ public class CreateFragment extends Fragment implements View.OnClickListener {
     }
 
     private void pressUpload(){
+        if(imageUri==null){
+            Toast.makeText(getContext(),"还未选择图片",Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(videoUri==null){
+            Toast.makeText(getContext(),"还未选择视频",Toast.LENGTH_LONG).show();
+            return;
+        }
         uploadTip();
     }
 

@@ -123,27 +123,27 @@ public class TakeVideoActivity extends AppCompatActivity {
         iv_change_video.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TakeVideoActivity.this,"我的手机切换前置摄像头无法录像！\n暂时禁用该功能！",Toast.LENGTH_LONG).show();
-//                mCamera.stopPreview();
-//                if(Camera.getNumberOfCameras()>1){
-//                    switch (CAMERA_TYPE) {
-//                        case CameraInfo.CAMERA_FACING_FRONT:
-//                            mCamera=getCamera(CameraInfo.CAMERA_FACING_BACK);
-//                            break;
-//                        case CameraInfo.CAMERA_FACING_BACK:
-//                            mCamera=getCamera(CameraInfo.CAMERA_FACING_FRONT);
-//                            break;
-//                    }
-//                    try {
-//                        mCamera.setPreviewDisplay(mSurfaceView.getHolder());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    mCamera.startPreview();
-//                }
-//                else {
-//                    Toast.makeText(TakeVideoActivity.this,"只有一个摄像头！",Toast.LENGTH_LONG).show();
-//                }
+                Toast.makeText(TakeVideoActivity.this,"部分手机切换前置摄像头会无法录像，出现闪退！",Toast.LENGTH_LONG).show();
+                mCamera.stopPreview();
+                if(Camera.getNumberOfCameras()>1){
+                    switch (CAMERA_TYPE) {
+                        case CameraInfo.CAMERA_FACING_FRONT:
+                            mCamera=getCamera(CameraInfo.CAMERA_FACING_BACK);
+                            break;
+                        case CameraInfo.CAMERA_FACING_BACK:
+                            mCamera=getCamera(CameraInfo.CAMERA_FACING_FRONT);
+                            break;
+                    }
+                    try {
+                        mCamera.setPreviewDisplay(mSurfaceView.getHolder());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    mCamera.startPreview();
+                }
+                else {
+                    Toast.makeText(TakeVideoActivity.this,"只有一个摄像头！",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
