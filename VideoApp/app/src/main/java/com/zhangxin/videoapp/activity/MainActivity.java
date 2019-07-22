@@ -70,7 +70,7 @@ public class MainActivity extends MyAppCompatActivity {
         });
         bottomNavigationView.setSelectedItemId(R.id.item_home);
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
-
+        viewPager.setOffscreenPageLimit(3);
     }
 
 
@@ -98,5 +98,6 @@ public class MainActivity extends MyAppCompatActivity {
             return itemNumber;
         }
     }
+
 
 }
